@@ -89,8 +89,8 @@ section p {
 	-webkit-transition-delay:.4s;
 	-moz-transition:opacity .6s;
 	-moz-transition-delay:.4s;
-	-o-transition:opacity .6s;
-	-o-transition-delay:.4s;
+	-ms-transition: opacity .6s;
+	-ms-transition-delay:.4s;
 	transition: opacity .6s;
 	transition-delay:.4s;
 }
@@ -107,7 +107,7 @@ section p {
 .viewing-page-4 #page4 .container {
     opacity: 1;
 }
-.viewing-page-5 #page5 .container {
+/*.viewing-page-5 #page5 .container {
     opacity: 1;
 }
 .viewing-page-6 #page6 .container {
@@ -124,7 +124,7 @@ section p {
 }
 .viewing-page-10 #page10 .container {
     opacity: 1;
-}
+}*/
 a{
     font-size:15px;
 	font-weight: 300;
