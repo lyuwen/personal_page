@@ -1,24 +1,27 @@
 /**
- * UIPageScrolling.js v1.0
+ * UIPageScrolling.js v2.0
  *
  * JQuery plugin
  *
- * by Nikita Mostovoy
+ * Credit to Nikita Mostovoy for creating the script
+ * 
+ * Change made to the Mouse Whell event part
+ * 
+ * Mod by Lyuwen Fu
  */
 
 (function($) {
     /**
-     * Стандарные настройки
-     * section {String} - селектор элементов
+     * section {String}
      * easing {String} - transition-timing-function
-     * time {Number} - время анимации
-     * beforeMoveFunc {Function} - функция, выполняющаяся перед анимацией
-     * afterMoveFunc {Function} - функция, выполняющаяся после анимации
-     * isCyclic {Boolean} - циклическое переключение "слайдов"
-     * isVertical {Boolean} - вертикальная прокрутка, false = горизонтальная
-     * sectionsControl {String} - селектор на выбор секции
-     * captureKeyboard {Boolean} - управление как мышкой, так и клавиатурой
-     * captureTouch {Boolean} - управление переключением слайдов касанием
+     * time {Number}
+     * beforeMoveFunc {Function}
+     * afterMoveFunc {Function}
+     * isCyclic {Boolean}
+     * isVertical {Boolean}
+     * sectionsControl {String}
+     * captureKeyboard {Boolean}
+     * captureTouch {Boolean}
      */
     var defaults = {
         sections : "section",
@@ -34,9 +37,9 @@
     };
 
     /**
-     * Создаем прокрутку по заданному div
-     * @param settings - польховательские настройки
-     * @returns {*|HTMLElement} JQuery object
+     * Create a scrolling for a given div
+     * @param settings - user settings
+     * @returns {* | HTMLElement} JQuery object
      */
     $.fn.UIPageScrolling = function (settings) {
         var options = $.extend({}, defaults, settings),
@@ -101,12 +104,12 @@
         }
 
         /**
-         * Перевод слайда к заданному
-         * @param position - позиция (в процентах)
-         * @param options - опции
-         * @param index - индекс целевого слайда
-         * @returns {*|HTMLElement}
-         */
+          * Transfer the slide to a given
+          * @param Position - the position (in percent)
+          * @param Options - options
+          * @param Index - the index of the target slide
+          * @returns {* | HTMLElement}
+          */
          function transformPageTo(index) {
 
             var position = index * 100,
@@ -149,7 +152,7 @@
         transformPageTo = transformPageTo.bind(this);
 
         /**
-         * переход на слайд по заданному индексу
+         * Move to certain page
          * @param index
          */
         $.fn.moveTo = function(index) {
@@ -158,7 +161,7 @@
         };
 
         /**
-         * Переход на следующий слайд
+         * Move to next page
          */
         $.fn.moveNext = function() {
             if (lockNext) return;
@@ -173,7 +176,7 @@
         };
 
         /**
-         * Переход на предыдущий слайд
+         * Move to previous page
          */
         $.fn.movePrevious = function() {
             if (lockPrev) return;
@@ -188,7 +191,7 @@
         };
 
         /**
-         * Обработка нажатия клавиши
+         * Process keyboard input
          * @param {Event} e
          */
         function processKeyEvent(e) {
@@ -209,7 +212,15 @@
         processKeyEvent = processKeyEvent.bind(this);
 
         /**
-         * Работа с колесом мышки
+         * Process Mouse Whell event
+         * 
+         * I add an alternative algorithm to
+         * track the extreme speed of the wheel event
+         * at which point the scroll will be triggered
+         * 
+         * This is to prevent too much scroll been triggered
+         * during single scroll gesture
+         * 
          * @param e
          */
         function processMouseWheel(event, delta) {
@@ -223,9 +234,7 @@
               lastDDelta=curDDelta;
               lastDelta=delta;
               //if (event.wheelDelta) topDelta = 10;
-              /*document.location.hash = (timeNow-lastAnim) + " " + delta ;
-              if(timeNow - lastAnim > 500){
-              if (delta < -topDelta) $(this).moveNext();
+              /*if (delta < -topDelta) $(this).moveNext();
               if (delta > topDelta) $(this).movePrevious()
               }
               lastAnim = timeNow;*/
@@ -234,14 +243,14 @@
         processMouseWheel = processMouseWheel.bind(this);
 
         /**
-         * убирает блокировки на скроллинг
+         * remove the lock on the scrolling
          */
         options.lockManager = function() {
             lockNext = false;
             lockPrev = false;
         };
 
-        //настройка слайдов (положение, data-аттрибуты)
+        //Slide setting (status, data-attributes)
         current.children(options.sections)
             .addClass("ui-page-scrolling-section").each(function () {
                 if (options.isVertical) {
@@ -255,7 +264,7 @@
 
         maxIndex = index-1;
 
-        //Настройка переключателей (если есть)
+        //Setting switches (if any)
         index = 0;
         if (options.sectionsControl) {
             $(options.sectionsControl)
@@ -266,13 +275,13 @@
                 });
         }
 
-        //захват мыши и касаний
+        //capture mouse and touch
         if (options.captureTouch) {
             current.bind("mousedown", mouseDownEvent);
             current.bind("touchstart", touchStartEvent);
         }
 
-        //Стандартная настройка
+        //default setting
         current.addClass('ui-page-scrolling-main')
             .bind("mousewheel DOMMouseScroll", function(event) {
                 event.preventDefault();
@@ -282,7 +291,7 @@
 
         transformPageTo(0);
 
-        //захват нажатий клавиш
+        //capture keystrokes
         if (options.captureKeyboard) {
             $(window).bind("keydown", processKeyEvent);
         }
