@@ -43,9 +43,9 @@
             index = 0,
             current = $(this),
             maxIndex = 0,
+            lastDelta=0;
+            lastDDelta=0;
             lockNext = false,
-            lastAnimation = 0,
-            quietPeriod = 500,
             lockPrev = false;
 
         /**
@@ -212,21 +212,23 @@
          * Работа с колесом мышки
          * @param e
          */
-        function processMouseWheel(e) {
-              var event = window.event || e.originalEvent,
-                  delta = event.wheelDelta || (-120) * event.detail,
-                  topDelta = 120,
-                  //timeNow = new Date().getTime();
-              
-              //document.location.hash = timeNow+" "+lastAnimation+" "+(options.time+quietPeriod);
-              /*if(timeNow - lastAnimation < options.time + quietPeriod) {
-                  e.preventDefault();
-                  return;
-               }*/
-               if (delta < -topDelta) $(this).moveNext();
-               if (delta > topDelta) $(this).movePrevious()
-
-               //lastAnimation = timeNow;
+        function processMouseWheel(event, delta) {
+              var topDelta = 40,
+                  timeNow = new Date().getTime(),
+                  curDDelta=delta-lastDelta;
+              if (curDDelta*lastDDelta < 0){
+                  if (delta < -topDelta) $(this).moveNext();
+                  if (delta > topDelta) $(this).movePrevious();
+              }
+              lastDDelta=curDDelta;
+              lastDelta=delta;
+              //if (event.wheelDelta) topDelta = 10;
+              /*document.location.hash = (timeNow-lastAnim) + " " + delta ;
+              if(timeNow - lastAnim > 500){
+              if (delta < -topDelta) $(this).moveNext();
+              if (delta > topDelta) $(this).movePrevious()
+              }
+              lastAnim = timeNow;*/
         }
 
         processMouseWheel = processMouseWheel.bind(this);
@@ -272,7 +274,11 @@
 
         //Стандартная настройка
         current.addClass('ui-page-scrolling-main')
-            .bind("mousewheel DOMMouseScroll", processMouseWheel);
+            .bind("mousewheel DOMMouseScroll", function(event) {
+                event.preventDefault();
+                var delta = event.originalEvent.wheelDelta || -(120)*event.originalEvent.detail;
+                processMouseWheel(event,delta);
+                });
 
         transformPageTo(0);
 
