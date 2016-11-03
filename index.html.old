@@ -1,12 +1,37 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta content="text/html; charset=utf-8">
-    <title>Lywuen Fu - About</title>
-    <script type="text/javascript" src="http://yandex.st/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="static/js/UIPageScrolling.js"></script>
-    <script type="text/javascript" charset="utf-8" src="static/bootstrap/js/bootstrap.min.js"></script>
-    <script>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US" prefix="og: http://ogp.me/ns#" class="no-js">
+<!--<html class="no-js">-->
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=8; IE=9" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+        <div id="wx_pic" style="margin:0 auto;display:none;">
+        <img src="static/favicon.png" />
+        </div>
+        <link rel="icon" type="image/png" href="static/favicon.png" />
+
+        <title>Lyuwen Fu - Resume</title>
+        <meta name="description" content="Lyuwen Fu - Resume"/>
+
+        <!--<script type="text/javascript" charset="utf-8" src="static/js/jquery-3.1.1.min.js"></script>-->
+        <script type="text/javascript" charset="utf-8" src="static/js/modernizr-custom.js"></script>
+        <script type="text/javascript" charset="utf-8" src="static/bootstrap/js/bootstrap.min.js"></script>
+        <!--<script type="text/javascript" charset="utf-8" src="static/js/jquery.onepage-scroll.js"></script>-->
+        <script type="text/javascript" src="http://yandex.st/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="static/js/UIPageScrolling.js"></script>
+        <!--<script>
+            $(document).ready(function(){
+                $(".main").onepage_scroll({
+                    sectionContainer: "section",
+                    loop: false,
+                    responsiveFallback: false,
+                    afterMove: function(index) {},
+                    beforeMove: function(index) {},
+                });
+            });
+	    </script>-->
+        <script>
         $(function() {
 
             $(".main").UIPageScrolling({
@@ -17,28 +42,36 @@
 
         })
     </script>
-    <link type='text/css' rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="static/css/UIPageScrolling.css" type="text/css" />
-    <link type='text/css' rel="stylesheet" href="static/css/base.css" />
-
-</head>
-<body class="page">
-    <!--
-    <div class="menu">
-        <div class="menu-line">
-            <div class="menu__item">About   Lyuwen Fu</div>
-        </div>
-    </div>
-    -->
+        <link type='text/css' rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css" />
+        <link type='text/css' rel="stylesheet" href="static/css/base.css" />
+        <link type='text/css' rel='stylesheet' href='static/css/onepage-scroll.css' />
+        <link rel="stylesheet" href="static/css/UIPageScrolling.css" type="text/css">
+    </head>
+    <body class="page"
     <ul class="page-control">
         <li class="page-control__item"></li>
         <li class="page-control__item"></li>
         <li class="page-control__item"></li>
-        <li class="page-control__item"></li>
-    </ul>
-    <div class="main">
+    </ul>>
+<!--
+<header class="entry-header">
+    <div style="width: 100%;">
+    <div style="float:left; width: 30%">
+        <h1 style="padding-left: 80px;">Lyuwen Fu</h1>
+    </div>
+    <div id="intro" style="width:60%;padding-top:20px;float:right;padding-right: 80px;vertical-align:middle;">
+        <small style="font-size:12px;color:#95a5a6;" >
+        I am a Master student majoring in Materials Science, graduating this fall.
+        My research is focused on first-principle computation, which means I am also a developer.
+        I am applying for Ph.D. for 2017 fall. Meanwhile, I am planning on finding a full time intern after my graduation. 
+        </small>
+    </div>
+</div>
+</header>
+-->
 
-        <section id="page1" class="item">
+    <div class="main">
+        <section id="page1">
             <div class="container">
                 <h1>Lyuwen Fu</h1>
                 <p class="intro">
@@ -49,12 +82,9 @@
                 <!--Meanwhile, I am planning on finding a full time intern after my graduation.--> 
                 </p>
             </div>
-
         </section>
 
-
-
-        <section id="page2" class="item">
+        <section id="page2">
             <div class="container">
                 <h2>Education</h2>
                 <p class="title"><strong>Columbia University</strong>, New York, New York</p>
@@ -68,75 +98,11 @@
                 <p>Thesis: Research on the Quantum Transport Properties of Resistive RAM</p>
                 <p>Adviser: Professor Jiao Teng</p>
                 <p>Cumulative GPA: 3.46 / 4.00</p>
+
             </div>
         </section>
-        <!--
-        <section id="page3" class="item">
-            <div class="container">
-                <h2>Research Experience</h2>
-                <p class="title"><strong>Columbia University</strong>, New York, New York</p>
-                <a  href="#part0" data-toggle="collapse">
-                    <table style="margin:0;">
-                        <tr>
-                        <th style="margin:0;padding:0;">
-                            <p>Department of Applied Physics and Applied Mathematics</p>
-                            <p>Project: A new approach for computing phonons via first-principles</p>
-                        </th>
-                        <th style="padding: 0 5px;text-align: right;"><p class="glyphicon glyphicon-plus"></p></th>
-                        </tr>
-                    </table>
-                </a>
-                <div id="part0" class="collapse">
-                    <p>Adviser: Professor Chris Marianetti</p>
-                    <p>Studied various methods of phonon computation using VASP and Quantum ESPRESSO with Python.</p>
-                    <p>Developed a cluster scattering code for Quantum ESPRESSO runs.</p>
-                    <p>Developing a method for optimization of phonon computing with machine learning technique.</p>
-                </div>
 
-                
-                <p class="title"><strong>University of Science and Technology Beijing</strong>, Beijing, China</p>
-                <a href="#part1" data-toggle="collapse">
-                    <table>
-                        <tr>
-                        <th>
-                            <p class="subtitle">Undergraduate Thesis, Department of Materials Physics and Chemistry</p>
-                            <p>Project: Research on the Quantum Transport Properties of Resistive RAM</p>
-                        </th>
-                        <th style="padding: 0 5px;text-align: right;"><p class="glyphicon glyphicon-plus"></p></th>
-                        </tr>
-                    </table>
-                
-                </a>
-                <div id="part1" class="collapse">
-                <p>Adviser: Professor Jiao Teng</p>
-                <p>Designed the synthesis process and the pattern of ReRAM thin film. Realized the resistive switch phenomenon in ReRAM.</p>
-                <p>Researched on the theoretical background of ReRAM and the mechanism and conditions for the Quantized Anisotropic Magnetoresistance.</p>
-                <p>Studied the resistive switch properties and electron transport properties of the ReRAM samples.</p>
-                </div>
-
-                <a href="#part2" data-toggle="collapse">
-                    <table>
-                        <tr>
-                        <th>
-                            <p class="subtitle">Undergraduate Student Research, Institute for Advanced Materials and Technology</p>
-                            <p>Project: Research on the Performance Study of One-dimensional Nano-Array Electrochemical Sensor</p>
-                        </th>
-                        <th style="padding: 0 5px;text-align: right;"><p class="glyphicon glyphicon-plus"></p></th>
-                        </tr>
-                    </table>
-                    
-                </a>
-                <div id="part2" class="collapse">
-                    <p>Adviser: Professor Huimin Meng</p>
-                    <p>Developed a new method of the synthesis of the one-dimensional IrO2 nanometer 
-                        array electrodes and studied electrochemistry properties of the electrode.</p>
-                </div>
-            </div>
-        </section>-->
-
-        <!--Old version of page3-->
-        
-        <section id="page3" class="item">
+        <section id="page3">
             <div class="container">
                 <h2>Research Experience</h2>
                 <p class="title"><strong>Columbia University</strong>, New York, New York</p>
@@ -158,8 +124,8 @@
                     <p>Developing a method for optimization of phonon computing with machine learning technique.</p>
                 </div>
  
+                
                 <p class="title"><strong>University of Science and Technology Beijing</strong>, Beijing, China</p>
-
                 <a href="#part1" data-toggle="collapse">
                     <table>
                         <tr>
@@ -170,7 +136,7 @@
                         <th style="padding: 0 5px;text-align: right;"><p class="glyphicon glyphicon-plus"></p></th>
                         </tr>
                     </table>
-                
+                   
                 </a>
                 <div id="part1" class="collapse">
                 <p>Adviser: Professor Jiao Teng</p>
@@ -178,9 +144,6 @@
                 <p>Researched on the theoretical background of ReRAM and the mechanism and conditions for the Quantized Anisotropic Magnetoresistance.</p>
                 <p>Studied the resistive switch properties and electron transport properties of the ReRAM samples.</p>
                 </div>
-
-
-                <p style=""></p>
 
                 <a href="#part2" data-toggle="collapse">
                     <table>
@@ -201,9 +164,38 @@
                 </div>
             </div>
         </section>
-        
 
-        <section id="page4" class="item">
+        <!--Old version of page3-->
+        <!--
+        <section id="page3">
+            <div class="container">
+                <h2>Research Experience</h2>
+                <p class="title"><strong>Columbia University</strong>, New York, New York</p>
+                <p>Department of Applied Physics and Applied Mathematics</p>
+                <p>Project: A new approach for computing phonons via first-principles</p>
+                <p>Adviser: Professor Chris Marianetti</p>
+                <p>Studied various methods of phonon computation using VASP and Quantum ESPRESSO with Python.</p>
+                <p>Developed a cluster scattering code for Quantum ESPRESSO runs.</p>
+                <p>Developing a method for optimization of phonon computing with machine learning technique.</p>
+ 
+                
+                <p class="title"><strong>University of Science and Technology Beijing</strong>, Beijing, China</p>
+                <p class="subtitle">Undergraduate Thesis, Department of Materials Physics and Chemistry</p>
+                <p>Project: Research on the Quantum Transport Properties of Resistive RAM</p>
+                <p>Adviser: Professor Jiao Teng</p>
+                <p>Designed the synthesis process and the pattern of ReRAM thin film. Realized the resistive switch phenomenon in ReRAM.</p>
+                <p>Researched on the theoretical background of ReRAM and the mechanism and conditions for the Quantized Anisotropic Magnetoresistance.</p>
+                <p>Studied the resistive switch properties and electron transport properties of the ReRAM samples.</p>
+
+                <p class="subtitle">Undergraduate Student Research, Institute for Advanced Materials and Technology</p>
+                <p>Project: Research on the Performance Study of One-dimensional Nano-Array Electrochemical Sensor</p>
+                <p>Adviser: Professor Huimin Meng</p>
+                <p>Developed a new method of the synthesis of the one-dimensional IrO2 nanometer array electrodes and studied electrochemistry properties of the electrode.</p>
+            </div>
+        </section>
+        -->
+       	 	
+        <section id="page4">
             <div class="container">
                 <h2>Skills</h2>
                 <div style="margin-top:15px;">
@@ -252,8 +244,9 @@
                     </tr>
                 </table>
             </div>
+            
+            
         </section>
-
-    </div>
-</body>
+		</div>
+    </body>
 </html>
