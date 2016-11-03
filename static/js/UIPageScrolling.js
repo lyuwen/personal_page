@@ -44,6 +44,8 @@
             current = $(this),
             maxIndex = 0,
             lockNext = false,
+            lastAnimation = 0,
+            quietPeriod = 500,
             lockPrev = false;
 
         /**
@@ -213,10 +215,18 @@
         function processMouseWheel(e) {
               var event = window.event || e.originalEvent,
                   delta = event.wheelDelta || (-120) * event.detail,
-                  topDelta = 200;
-              if (event.wheelDelta) topDelta = 10;
-              if (delta < -topDelta) $(this).moveNext();
-              if (delta > topDelta) $(this).movePrevious()
+                  topDelta = 120,
+                  //timeNow = new Date().getTime();
+              
+              //document.location.hash = timeNow+" "+lastAnimation+" "+(options.time+quietPeriod);
+              /*if(timeNow - lastAnimation < options.time + quietPeriod) {
+                  e.preventDefault();
+                  return;
+               }*/
+               if (delta < -topDelta) $(this).moveNext();
+               if (delta > topDelta) $(this).movePrevious()
+
+               //lastAnimation = timeNow;
         }
 
         processMouseWheel = processMouseWheel.bind(this);
