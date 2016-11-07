@@ -1,3 +1,6 @@
+.page{
+    opacity: 1 !important;
+}
 html, body {
     max-width: 100%;
     overflow: hidden;
@@ -273,19 +276,19 @@ body.disabled-onepage-scroll, .disabled-onepage-scroll .ui-page-scrolling-main, 
 /**/
 
 .container {
-  -moz-transform:  translateY(-50%);
-  -webkit-transform:  translateY(-50%);
-  transform:  translateY(-50%);
+    -moz-transform:  translateY(-50%);
+    -webkit-transform:  translateY(-50%);
+    transform:  translateY(-50%);
 
-  opacity: 0;
-  -webkit-transition:opacity .6s;
-	-webkit-transition-delay:.4s;
-	-moz-transition:opacity .6s;
-	-moz-transition-delay:.4s;
-	-ms-transition: opacity .6s;
-	-ms-transition-delay:.4s;
-	transition: opacity .6s;
-	transition-delay:.4s;
+    opacity: 0;
+    -webkit-transition:opacity .6s;
+    -webkit-transition-delay:.4s;
+    -moz-transition:opacity .6s;
+    -moz-transition-delay:.4s;
+    -ms-transition: opacity .6s;
+    -ms-transition-delay:.4s;
+    transition: opacity .6s;
+    transition-delay:.4s;
 }
 
 
@@ -312,6 +315,7 @@ body.disabled-onepage-scroll, .disabled-onepage-scroll .ui-page-scrolling-main, 
 }
 
 .page-control {
+    opacity: 1 !important;
     right: 3%;
     top:50%;
     width:3%;
