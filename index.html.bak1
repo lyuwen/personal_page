@@ -12,34 +12,19 @@
     <script>
         $(function() {
             if ($(window).width()>600){
-                var fileref=document.createElement("link")
-                fileref.setAttribute("rel", "stylesheet")
-                fileref.setAttribute("type", "text/css")
-                fileref.setAttribute("href", "static/css/base_anim.css")
-                document.getElementsByTagName("head")[0].appendChild(fileref)
                 $(".main").UIPageScrolling({
                     sectionsControl:".page-control__item",
                     captureTouch: true,
                     time: 500,
                     captureKeyboard:true,
                 });
-            }else{
-                var fileref=document.createElement("link")
-                fileref.setAttribute("rel", "stylesheet")
-                fileref.setAttribute("type", "text/css")
-                fileref.setAttribute("href", "static/css/base_plain.css")
-                document.getElementsByTagName("head")[0].appendChild(fileref)
             }
 
         })
-
-        function resize() { 
-            /*ToDO resize*/
-        }
     </script>
     <link type='text/css' rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css" />
-    <!--<link rel="stylesheet" href="static/css/UIPageScrolling.css" type="text/css" />-->
-    <!--<link type='text/css' rel="stylesheet" href="static/css/base_plain.css" />-->
+    <link rel="stylesheet" href="static/css/UIPageScrolling.css" type="text/css" />
+    <link type='text/css' rel="stylesheet" href="static/css/base.css" />
 
 </head>
 <body class="page">
@@ -56,8 +41,7 @@
         <li class="page-control__item"></li>
         <li class="page-control__item"></li>
     </ul>
-    
-    <div id="mainpage" class="main">
+    <div class="main">
 
         <section id="page1" class="item">
             <div class="container">
@@ -246,7 +230,7 @@
                 
                 
             </div>
-            <div align="center" class="extlinks">
+            <div align="center" style="width:180px;bottom:10px;position:absolute;left:50%;margin: 0 0 0 -90px;">
                 <table id="social" align="center" style="width:130px;">
                     <tr>
                         <th align="center">

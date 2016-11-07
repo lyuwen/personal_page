@@ -32,6 +32,7 @@
         isCyclic : false,
         isVertical : true,
         sectionsControl : null,
+        responsiveFallback: false,
         captureKeyboard : false,
         captureTouch : false
     };
@@ -211,6 +212,54 @@
 
         processKeyEvent = processKeyEvent.bind(this);
 
+    function responsive() {
+      //start modification
+      var valForTest = false;
+      var typeOfRF = typeof options.responsiveFallback
+
+      if(typeOfRF == "number"){
+      	valForTest = $(window).width() < options.responsiveFallback;
+      }
+      if(typeOfRF == "boolean"){
+      	valForTest = options.responsiveFallback;
+      }
+      if(typeOfRF == "function"){
+      	valFunction = options.responsiveFallback();
+      	valForTest = valFunction;
+      	typeOFv = typeof valForTest;
+      	if(typeOFv == "number"){
+      		valForTest = $(window).width() < valFunction;
+      	}
+      }
+
+      //end modification
+      if (valForTest) {
+        $("body").addClass("disabled-onepage-scroll");
+        $(document).unbind('mousewheel DOMMouseScroll MozMousePixelScroll');
+        el.swipeEvents().unbind("swipeDown swipeUp");
+      } else {
+        if($("body").hasClass("disabled-onepage-scroll")) {
+          $("body").removeClass("disabled-onepage-scroll");
+          $("html, body, .wrapper").animate({ scrollTop: 0 }, "fast");
+        }
+
+
+        el.swipeEvents().bind("swipeDown",  function(event){
+          if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
+          el.moveUp();
+        }).bind("swipeUp", function(event){
+          if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
+          el.moveDown();
+        });
+
+        $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function(event) {
+          event.preventDefault();
+          var delta = event.originalEvent.wheelDelta || -(120)*event.originalEvent.detail;
+          processMouseWheel(event, delta);
+        });
+      }
+    }
+
         /**
          * Process Mouse Whell event
          * 
@@ -286,7 +335,7 @@
             .bind("mousewheel DOMMouseScroll", function(event) {
                 event.preventDefault();
                 var delta = event.originalEvent.wheelDelta || -(120)*event.originalEvent.detail;
-                processMouseWheel(event,delta);
+                if(!$("body").hasClass("disabled-onepage-scroll")) processMouseWheel(event,delta);
                 });
 
         transformPageTo(0);
@@ -294,6 +343,14 @@
         //capture keystrokes
         if (options.captureKeyboard) {
             $(window).bind("keydown", processKeyEvent);
+        }
+
+        if(settings.responsiveFallback != false) {
+        $(window).resize(function() {
+            responsive();
+        });
+
+        responsive();
         }
 
         return $(this);
