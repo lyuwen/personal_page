@@ -311,6 +311,7 @@ body.disabled-onepage-scroll, .disabled-onepage-scroll .ui-page-scrolling-main, 
     height: 5px;
     background-color: #000;
     margin-top:  10px;
+    margin-right: 100px;
     float: left;
 }
 
